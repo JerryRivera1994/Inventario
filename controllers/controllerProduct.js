@@ -1,4 +1,4 @@
-const Product = require('../models/Product')
+const Product = require('../models/product')
 
 module.exports.productoRegister = async (req,res) =>{
     try{
@@ -26,5 +26,35 @@ module.exports.productoRegister = async (req,res) =>{
 }
 
 module.exports.product_view = async (req, res) =>{
-    res.status(201).json({"msg":"Producto registró correctamente"});  
+    try {
+        const product = await Product.find().exec()
+        if(!product.length) {
+            message = 'No existen registros';
+        }
+        return res.status(200).json({
+          product
+        });
+    }
+    catch(e) {
+        return res.status(500).json({
+            message:'Error en la consulta'
+        });
+    }
+}
+
+module.exports.product_view_id = async (req, res) =>{
+    try {
+        const product = await Product.findOne({"_id":req.params._id})
+        if(!product.length) {
+            message = 'No existen registros';
+        }
+        return res.status(200).json({
+          product
+        });
+    }
+    catch(e) {
+        return res.status(500).json({
+            message:'Error en la consulta'
+        });
+    }
 }

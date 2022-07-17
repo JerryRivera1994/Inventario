@@ -7,7 +7,7 @@ const productShema = new Schema(
             require:[true, 'El nombre del producto es requerido']
         },
         price:{
-            type:String,
+            type:Number,
             require:[true, 'El precio del producto es requerido']
         },
         description:{
@@ -18,7 +18,7 @@ const productShema = new Schema(
             require:[true,'El proveedor es requerido']
         },
         stock:{
-            type: int,
+            type: Number,
             require:[true,'El stock es requerido']
         },
         img:{

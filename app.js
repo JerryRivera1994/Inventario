@@ -3,7 +3,7 @@ const express = require('express');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 
-// const {clientRoutes} = require('./routes/client.routes')
+const {productRoutes} = require('./routes/product.routes')
 
 const app = express();
 
@@ -14,6 +14,6 @@ app.use(express.json())
 
 const jsonParser = bodyParser.json()
 
-// app.use('/api',jsonParser,clientRoutes);   
+app.use('/api',jsonParser,productRoutes);   
 
 module.exports.app = app;
